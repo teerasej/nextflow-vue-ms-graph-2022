@@ -1,0 +1,7 @@
+{
+  "name": "nextflow-vue-ms-graph-2022",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}

@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "nextflow-vue-ms-graph-2022",
+	"webDir": "dist",
+	"bundledWebRuntime": false
+}
