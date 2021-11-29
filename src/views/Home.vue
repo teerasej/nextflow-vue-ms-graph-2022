@@ -8,10 +8,10 @@
 
     <ion-content :fullscreen="true">
       <div id="container">
-        <div v-if="!user">
+        <div v-if="!user.name">
           <ion-button>Sign in</ion-button>
         </div>
-        <div v-if="user">
+        <div v-if="user.name">
           <p>Hello, {{ user.name }}</p>
           <ul>
             <li v-for="item in messages" :key="item.id">
