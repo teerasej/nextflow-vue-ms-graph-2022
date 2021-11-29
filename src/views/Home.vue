@@ -69,6 +69,7 @@ export default defineComponent({
     async signIn() {
       try {
         await auth.login()
+        this.user = auth.user()
       } catch (err) {
         console.log(err.toString())
       }

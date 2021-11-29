@@ -63,4 +63,20 @@ export default {
     })
   },
 
+  user() {
+    if (!msalApp) {
+      return null
+    }
+
+    const currentAccounts = msalApp.getAllAccounts()
+    if (!currentAccounts || currentAccounts.length === 0) {
+      // No user signed in
+      return null
+    } else if (currentAccounts.length > 1) {
+      return currentAccounts[0]
+    } else {
+      return currentAccounts[0]
+    }
+  },
+
 }
