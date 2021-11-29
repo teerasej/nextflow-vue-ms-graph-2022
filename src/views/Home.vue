@@ -34,6 +34,7 @@ import {
   IonToolbar,
 } from "@ionic/vue";
 import { defineComponent } from "vue";
+import auth from '../services/auth';
 
 export default defineComponent({
   name: "Home",
@@ -55,6 +56,15 @@ export default defineComponent({
       ],
     };
   },
+
+  async created() {
+    let appClientID = "18942c9f-a155-4f47-8a2e-26a9bec3a45f";
+    let tenantId = "2f85a92b-2b18-47a7-9ad3-32caebd8138a";
+    auth.configure(appClientID, tenantId);
+    // Restore any cached or saved local user
+    //this.user = auth.user();
+  },
+
 });
 </script>
 
