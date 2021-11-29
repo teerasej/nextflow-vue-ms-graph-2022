@@ -9,7 +9,7 @@
     <ion-content :fullscreen="true">
       <div id="container">
         <div v-if="!user.name">
-          <ion-button>Sign in</ion-button>
+          <ion-button @click="signIn()">Sign in</ion-button>
         </div>
         <div v-if="user.name">
           <p>Hello, {{ user.name }}</p>
@@ -64,6 +64,17 @@ export default defineComponent({
     // Restore any cached or saved local user
     //this.user = auth.user();
   },
+
+  methods: {
+    async signIn() {
+      try {
+        await auth.login()
+      } catch (err) {
+        console.log(err.toString())
+      }
+    }
+  }
+
 
 });
 </script>

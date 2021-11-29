@@ -52,4 +52,15 @@ export default {
     msalApp = new msal.PublicClientApplication(config)
   },
 
+  async login(scopes = ['User.Read', 'Mail.ReadBasic', 'Mail.Read']) {
+    if (!msalApp) {
+      return
+    }
+
+    await msalApp.loginPopup({
+      scopes,
+      prompt: 'select_account'
+    })
+  },
+
 }
