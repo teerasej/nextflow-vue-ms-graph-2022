@@ -79,4 +79,34 @@ export default {
     }
   },
 
+  async acquireToken(scopes = ['user.read']) {
+    if (!msalApp) {
+      return null
+    }
+
+    // Set scopes for token request
+    const accessTokenRequest = {
+      scopes,
+      account: this.user()
+    }
+
+    let tokenResp
+    try {
+      // 1. Try to acquire token silently
+      tokenResp = await msalApp.acquireTokenSilent(accessTokenRequest)
+      console.log('### MSAL acquireTokenSilent was successful')
+    } catch (err) {
+      // 2. Silent process might have failed so try via popup
+      tokenResp = await msalApp.acquireTokenPopup(accessTokenRequest)
+      console.log('### MSAL acquireTokenPopup was successful')
+    }
+
+    // Just in case check, probably never triggers
+    if (!tokenResp.accessToken) {
+      throw new Error("### accessToken not found in response, that's bad")
+    }
+
+    return tokenResp.accessToken
+  },
+
 }

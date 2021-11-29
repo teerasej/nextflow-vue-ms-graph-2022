@@ -35,6 +35,7 @@ import {
 } from "@ionic/vue";
 import { defineComponent } from "vue";
 import auth from '../services/auth';
+import graph from '../services/graph';
 
 export default defineComponent({
   name: "Home",
@@ -70,6 +71,7 @@ export default defineComponent({
       try {
         await auth.login()
         this.user = auth.user()
+        this.messages = await graph.getEmails();
       } catch (err) {
         console.log(err.toString())
       }
